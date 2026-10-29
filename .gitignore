@@ -1,0 +1,4 @@
+# local runtime config; may hold the Cloudflare API token
+.env
+.env.*
+Caddyfile
