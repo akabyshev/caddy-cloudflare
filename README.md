@@ -26,13 +26,16 @@ volumes:
 ```
 
 ```caddyfile
+{
+	acme_dns cloudflare {env.CF_API_TOKEN}
+}
+
 example.com {
-	tls {
-		dns cloudflare {env.CF_API_TOKEN}
-	}
 	reverse_proxy app:8080
 }
 ```
+
+`acme_dns` applies the DNS challenge to every site in the Caddyfile. A site block with no directives obtains and renews a certificate without serving anything, for certificates used outside Caddy.
 
 ## Build and push
 
