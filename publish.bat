@@ -4,7 +4,7 @@ setlocal enabledelayedexpansion
 :: Configuration parameters
 set DOCKER_USER=akabyshev
 set IMAGE_NAME=caddy-cloudflare
-set TAG=2.11.3-alpine
+set TAG=2.11.9-alpine
 set FULL_IMAGE_NAME=%DOCKER_USER%/%IMAGE_NAME%:%TAG%
 
 echo ===================================================

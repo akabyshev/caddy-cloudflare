@@ -11,7 +11,7 @@ The API token is supplied at runtime and is not part of the image. It needs `Zon
 ```yaml
 services:
   caddy:
-    image: akabyshev/caddy-cloudflare:2.11.3-alpine
+    image: akabyshev/caddy-cloudflare:2.11.9-alpine
     environment:
       CF_API_TOKEN: ${CF_API_TOKEN}
     ports:
@@ -35,7 +35,7 @@ example.com {
 }
 ```
 
-`acme_dns` applies the DNS challenge to every site in the Caddyfile. A site block with no directives obtains and renews a certificate without serving anything, for certificates used outside Caddy.
+`acme_dns` applies the DNS challenge to every site in the Caddyfile.
 
 ## Build and push
 
@@ -47,13 +47,14 @@ This builds with `--pull --no-cache`, prompts for `docker login`, and pushes the
 
 ## Updating the Caddy version
 
-The version is set in three places, and they must all match:
+The version is set in four places, and they must all match:
 
 | File | Value |
 |---|---|
 | `publish.bat` | `set TAG=<version>-alpine` |
 | `Dockerfile` | `FROM caddy:<version>-builder AS builder` |
 | `Dockerfile` | `FROM caddy:<version>-alpine` |
+| `README.md` | `image: akabyshev/caddy-cloudflare:<version>-alpine` |
 
 Before bumping, confirm that the upstream tags exist:
 
